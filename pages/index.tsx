@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import { indexLanguage } from "../language/indexLg";
-import useDarkMode from "../components/useDarkMode";
-import Headers from '../components/Header'
+import Link from "next/link";
+
+import Headers from "../components/Header";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const { locale, locales, defaultLocale, asPath } = useRouter();
-  const router = useRouter();
+  const { locale } = useRouter();
   const {
     title,
     subtitle,
@@ -22,10 +22,10 @@ const Home: NextPage = () => {
     deploy,
     subDeploy,
   } = indexLanguage[locale!];
-  // const [colorTheme, setTheme] = useDarkMode();
-  useDarkMode();
   return (
-    <div className={`${styles.container} dark:bg-gray-900 dark:text-white transition duration-500`}>
+    <div
+      className={`bg-gray-50 dark:bg-gray-900 dark:text-white transition duration-500`}
+    >
       <Headers />
       <Head>
         <title>Create Next App</title>
@@ -34,7 +34,15 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={`${styles.title} text-red-500 `}>{title}</h1>
+        <h1 className={`${styles.title} text-blue-500 dark:text-white`}>
+          {title}
+        </h1>
+
+        <Link href="/login" passHref>
+          <label className="bg-gray-300 border-2 cursor-pointer">
+            Click to Login page
+          </label>
+        </Link>
 
         <p className={styles.description}>{subtitle}</p>
 

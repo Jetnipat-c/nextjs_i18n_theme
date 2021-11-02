@@ -1,12 +1,12 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
+
 import { loginLanguage } from "../language/login";
+import Header from "../components/Header";
 
 export default function Login() {
-  const { locale, locales, defaultLocale, asPath } = useRouter();
+  const { locale } = useRouter();
   const router = useRouter();
-  console.log("locales : ", asPath);
 
   const {
     title,
@@ -19,25 +19,20 @@ export default function Login() {
 
   return (
     <div>
-      <div></div>
-      <div>
-        <select
-          defaultValue={locale!}
-          onChange={(e) =>
-            router.push("/login", "/login", { locale: e.target.value })
-          }
-        >
-          <option value="th-TH">th-TH</option>
-          <option value="en-US">en-US</option>
-        </select>
-      </div>
+      <Header />
       <div>{title}</div>
       <div>{username}</div>
-      <input placeholder={usernamePlaceholder} />
+      <input placeholder={usernamePlaceholder} className="border-2" />
       <div>{password}</div>
-      <input placeholder={passwordPlaceholder} type="password" />
+      <input
+        placeholder={passwordPlaceholder}
+        type="password"
+        className="border-2"
+      />
       <div>
-        <button onClick={() => router.push("/")}>{btnLogin}</button>
+        <button className="border-2" onClick={() => router.push("/")}>
+          {btnLogin}
+        </button>
       </div>
     </div>
   );
