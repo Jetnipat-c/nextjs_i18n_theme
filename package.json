@@ -1,5 +1,5 @@
 {
-  "name": "test_i18n",
+  "name": "nextjs_i18n_theme",
   "private": true,
   "scripts": {
     "dev": "next dev",
